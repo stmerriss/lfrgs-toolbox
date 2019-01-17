@@ -43,7 +43,7 @@ for exammple an OSGI Component may add portlets to some pages with:
 The test package contains a sample upgrade step registrar and module versioning 
 scheme.
 
-mvn repository under http://raw.github.com/arbetts/lfrgs-env-setup/repository
+mvn repository under http://raw.github.com/arbetts/lfrgs-toolbox/repository
 
 releases: 
 - 1.0.0 initial api
