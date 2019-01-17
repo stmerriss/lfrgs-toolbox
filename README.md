@@ -21,3 +21,5 @@ I follow this guide to creating and adding maven artifacts to /repository branch
 https://gist.github.com/fernandezpablo85/03cf8b0cd2e7d8527063
 
 maven artifacts are published under 'lfrgs' group
+
+mvn repository under http://raw.github.com/arbetts/lfrgs-toolbox/repository
