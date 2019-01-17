@@ -19,3 +19,5 @@ ultimate goal is that a developer can reference your module via their build.grad
 I follow this guide to creating and adding maven artifacts to /repository branch
 
 https://gist.github.com/fernandezpablo85/03cf8b0cd2e7d8527063
+
+maven artifacts are published under 'lfrgs' group
