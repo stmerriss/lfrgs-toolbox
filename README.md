@@ -13,3 +13,9 @@ Liferay dependencies are not considered 3rd party
 everything else is considered 3rd party and must be satisfied within the module by the gradle dependnecies/build.
 
 ultimate goal is that a developer can reference your module via their build.gradle and use the tool you provide without having to copy/paste your module into their workspace.
+
+## how maven artifacts are created
+
+I follow this guide to creating and adding maven artifacts to /repository branch
+
+https://gist.github.com/fernandezpablo85/03cf8b0cd2e7d8527063
