@@ -2,7 +2,7 @@
 
 this toolbox is intended to be a repository of api/tools that are helpful for easing the development process
 
-## requirements for contruting a module
+## requirements for contributing a module
 1) module root that is pluggable into a liferay gradle workspace
 2) sample/test code resides in test package only
 3) README.md file in module root that describes usage and purpose
