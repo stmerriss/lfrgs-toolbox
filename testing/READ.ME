@@ -1,0 +1,94 @@
+add the following code to top level build.gradle file.
+
+subprojects {
+    task testFunctional(type: Test) {
+        include "**/runners/*Runner.class"
+
+        systemProperty "fluentlenium.webDriver", project.hasProperty("fluentlenium.webDriver") ? project.property("fluentlenium.webDriver") : ""
+        systemProperty "fluentlenium.baseUrl", project.hasProperty("fluentlenium.baseUrl") ? project.property("fluentlenium.baseUrl") : ""
+
+        testLogging {
+            events "passed", "skipped", "failed", "standardOut", "standardError"
+        }
+    }
+
+	task copyWebDrivers (type: Copy) {
+		Project functionalAPI = project(":modules:test:test-functional")
+
+		from functionalAPI.file("src/main/resources/drivers")
+		into project.file("build/resources/main/drivers")
+		include '*'
+	}
+}
+
+Overview
+The Why
+Functional tests are designed to test the product simulating an end user. This makes it important for the test writer to imagine them-self as a such (more on this later). Unlike unit and integration tests, which isolate the methods called, functional tests require fully functioning products to be able to test the product as a whole.  In the case of Jarvis, functional tests would work by interacting with webpages.
+The How: Selenium + Cucumber + Gherkin + Java + Fluentlenium
+Selenium - seleniumhq.org
+Selenium has been around for a long time and is designed to simulate interactions with webpages as a human would. (i.e. clicking, dragging, typing, etc..) It's a low level, powerful tool capable of doing most of what any other user is capable of doing. While it is possible to use selenium on it's own for automated functional tests, it's not recommended. There is an overhead to maintaining code required for each step in the test. Anyone coding selenium quickly realizes a framework surrounding it is required.
+Cucumber - docs.cucumber.io/cucumber & GHERKIN - docs.cucumber.io/gherkin/
+Cucumber is a translation tool. Cucumber takes business requirements written in simple straightforward sentences and translates them into reusable methods, coded to perform the task. One way of thinking about this is documentation by example. The feature file contains regular sentences and each  is translated to code. There are three key benefits: One functional test can be read by non technical team members, two built in how-to guide, documentation, useful for onboard new people to the project, and three can be used as a written contract of sorts between the business users and developers. Gherkin is the language of the feature file. It provides various keywords to help format code.
+Fluentlenium - fluentlenium.org/docs
+Fluentlenium does a lot of the heavy lifting by wrapping selenium and provides a framework for abstracting the test steps from the page elements.
+The Technical
+Folder Structure
+
+
+Base Functional Testing Module:
+Add any non-project specific or any core Liferay functionality (e.g. login, control panel, etc..) to the base testing module.
+BaseRunner.java adds the provided drivers to system properties so they do not need to be installed on every machine.
+
+
+Project specific modules:
+Create a *-test module as a sibling to any *-web modules being tested.
+Import the base test module in the build.gradle
+
+e.g. compile project(":modules:test:test-functional")
+Export the components and steps packages in the bnd.bnd
+e.g.
+Export-Package: \
+   com.liferay.jarvis.replicon.test.functional.components,\
+   com.liferay.jarvis.replicon.test.functional.steps
+
+Architecture
+Files consist of three types; features, steps, and components.
+
+Feature → Step → Component
+
+Feature Layer
+Plain simple sentences defining the test scenarios.
+Written in the Gherkin syntax as described here, docs.cucumber.io/gherkin
+Should be written in the first person as the end user, typically starting with I (e.g. "I click on ...", "I type ...", "I log in as ....")
+Step Layer
+Called by feature layer, calls others in step layer and page layer.
+Performs regex pattern matching of the sentences from the feature file, translating it into a particular method call.
+Page / Component Layer
+Called by step layer.
+Representation of a webpage with locators for elements on the page and actions to perform on them. In the Liferay context, these should be scoped by portlets to reduce code duplication.
+Runner
+Looks for feature files and corresponding step files to run
+Runs a single feature or a set of features.
+automationtestinghub.com/cucumber-test-runner-class-junit
+Running a Test
+Setup
+No setup necessary!
+
+Autoload Webdrivers
+
+Webdrivers are loaded at runtime, so no need to install them on your system.
+
+Execution
+Start the JARVIS bundle.
+Run the following command: ./gradlew clean testFunctional
+Add the following properties if needed:
+-Pfluentlenium.webDriver="firefox"
+-Pfluentlenium.baseUrl="http://jarvis-local.liferay.services:8080”
+Override
+
+Setting these properties will override the FluentConfigurations set in the runner file.
+
+IntelliJ
+Go to Edit Configurations → + (add) → JUnit.
+Select the classpath where the runner is located under the Use classpath of module section.
+Click the ellipse button to select the runner file under the Class section.

@@ -1,0 +1,10 @@
+dependencies {
+	compile group: "org.fluentlenium", name: "fluentlenium-core", version: "3.4.1"
+	compile group: "org.fluentlenium", name: "fluentlenium-junit", version: "3.4.1"
+	compile group: "org.fluentlenium", name: "fluentlenium-assertj", version: "3.4.1"
+	compile group: "org.fluentlenium", name: "fluentlenium-cucumber", version: "3.7.1"
+
+	compile group: "org.seleniumhq.selenium", name: "selenium-chrome-driver", version: "3.141.59"
+	compile group: "org.seleniumhq.selenium", name: "selenium-firefox-driver", version: "3.141.59"
+	compile group: "org.seleniumhq.selenium", name: "selenium-safari-driver", version: "3.141.59"
+}
