@@ -1,0 +1,8 @@
+Bundle-Name: search-api
+Bundle-SymbolicName: search.api
+Bundle-Version: 1.0.0
+Export-Package: \
+    com.lfrgs.search,\
+    com.lfrgs.search.constants,\
+    com.lfrgs.search.context,\
+    com.lfrgs.search.dto
