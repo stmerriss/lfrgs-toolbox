@@ -1,7 +1,7 @@
 package com.lfrgs.pdf.generator.api;
 
-import com.lfrgs.tools.Pair;
-import com.lfrgs.tools.UnsafeConsumer;
+import com.liferay.gs.util.dto.Pair;
+import com.liferay.gs.util.operations.UnsafeConsumer;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 
