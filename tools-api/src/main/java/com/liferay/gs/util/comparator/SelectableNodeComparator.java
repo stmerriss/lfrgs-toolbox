@@ -1,5 +1,7 @@
 package com.liferay.gs.util.comparator;
 
+import com.liferay.gs.util.dto.SelectableNode;
+
 import java.util.Comparator;
 import java.util.Objects;
 

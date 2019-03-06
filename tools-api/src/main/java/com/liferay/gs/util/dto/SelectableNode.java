@@ -1,4 +1,4 @@
-package com.liferay.gs.util.comparator;
+package com.liferay.gs.util.dto;
 
 import java.util.ArrayList;
 import java.util.List;
