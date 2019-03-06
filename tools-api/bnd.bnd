@@ -1,4 +1,4 @@
 Bundle-Name: Tools API
 Bundle-SymbolicName: tools-api
-Bundle-Version: 1.0.0
+Bundle-Version: 0.0.1
 Export-Package: com.lfrgs.tools.api
