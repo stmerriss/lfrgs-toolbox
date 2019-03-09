@@ -1,6 +1,6 @@
 package com.liferay.gs.search.sample;
 
-import com.liferay.gs.search.builders.ModelSearcherBuilder;
+import com.liferay.gs.search.builders.BaseModelSearcherBuilder;
 import com.liferay.gs.search.builders.SearchFilterBuilder;
 
 import com.liferay.portal.kernel.model.Organization;
@@ -23,8 +23,8 @@ import java.util.function.BiFunction;
  */
 @Component
 public class OrganizationSearcherBuilder
-	extends ModelSearcherBuilder<OrganizationSearcherBuilder, Organization,
-		OrganizationSearcher> {
+	extends BaseModelSearcherBuilder<OrganizationSearcherBuilder, Organization,
+			OrganizationSearcher> {
 
 	public OrganizationSearcherBuilder() {
 		_name = null;
@@ -55,7 +55,7 @@ public class OrganizationSearcherBuilder
 	}
 
 	@Override
-	protected SearchFilterBuilder getSearchFilterBuilder() {
+	public SearchFilterBuilder getSearchFilterBuilder() {
 		return new SearchFilterBuilder()
 			.addFilter(Field.NAME, _name, BooleanClauseOccur.SHOULD)
 			.addMultipleValues(
@@ -70,6 +70,11 @@ public class OrganizationSearcherBuilder
 	}
 
 	@Override
+	public BiFunction<SearchContext, Query, OrganizationSearcher> modelSearcherGenerator() {
+		return OrganizationSearcher::new;
+	}
+
+	@Override
 	protected Class<Organization> getModelClass() {
 		return Organization.class;
 	}
@@ -77,11 +82,6 @@ public class OrganizationSearcherBuilder
 	@Override
 	protected OrganizationSearcherBuilder self() {
 		return this;
-	}
-
-	@Override
-	protected BiFunction<SearchContext, Query, OrganizationSearcher> modelSearcherGenerator() {
-		return OrganizationSearcher::new;
 	}
 
 	private String _name;
