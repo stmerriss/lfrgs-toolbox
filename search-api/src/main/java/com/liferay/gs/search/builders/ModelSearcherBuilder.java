@@ -4,13 +4,14 @@ import com.liferay.gs.search.Builder;
 
 import com.liferay.gs.search.ModelSearcher;
 import com.liferay.portal.kernel.model.BaseModel;
-import com.liferay.portal.kernel.search.BooleanQuery;
+import com.liferay.portal.kernel.search.Query;
 import com.liferay.portal.kernel.search.SearchContext;
 import com.liferay.portal.kernel.search.filter.BooleanFilter;
 
 import java.util.function.BiFunction;
 
 /**
+ * @author Shane Merriss
  * @author Andrew Betts
  *
  * @param <B> SearcherBuilder
@@ -25,7 +26,7 @@ public abstract class ModelSearcherBuilder<B, T extends BaseModel<T>, S extends 
 
 		BooleanFilter searchFilter = getSearchFilterBuilder().build();
 
-		BooleanQuery searchQuery = getSearchQueryBuilder()
+		Query searchQuery = getSearchQueryBuilder()
 			.addFilter(searchFilter)
 			.build();
 
@@ -57,14 +58,14 @@ public abstract class ModelSearcherBuilder<B, T extends BaseModel<T>, S extends 
 	}
 
 	public B setKeywords(String keywords) {
-		_keywords = keywords;
+		this.keywords = keywords;
 
 		return self();
 	}
 
 	protected abstract Class<T> getModelClass();
 
-	protected abstract BiFunction<SearchContext, BooleanQuery, S> modelSearcherGenerator();
+	protected abstract BiFunction<SearchContext, Query, S> modelSearcherGenerator();
 
 	protected abstract B self();
 
@@ -84,10 +85,11 @@ public abstract class ModelSearcherBuilder<B, T extends BaseModel<T>, S extends 
 		return new SearchQueryBuilder(getModelClass());
 	}
 
-	protected boolean _andSearch;
-	protected long _companyId;
-	protected String _keywords;
-	protected int _start;
-	protected int _end;
+	protected String keywords;
+
+	private boolean _andSearch;
+	private long _companyId;
+	private int _start;
+	private int _end;
 
 }

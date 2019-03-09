@@ -3,28 +3,42 @@ package com.liferay.gs.search;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.model.BaseModel;
-import com.liferay.portal.kernel.search.BooleanQuery;
 import com.liferay.portal.kernel.search.Document;
 import com.liferay.portal.kernel.search.Hits;
 import com.liferay.portal.kernel.search.IndexSearcherHelperUtil;
+import com.liferay.portal.kernel.search.Query;
 import com.liferay.portal.kernel.search.SearchContext;
 import com.liferay.portal.kernel.search.SearchException;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.function.Function;
 
 /**
  * @author Shane Merriss
  */
 public abstract class ModelSearcher<T extends BaseModel<T>>
-	implements Searcher<Document> {
+	implements Searcher<Document>, Function<Function<Document, T>, List<T>> {
 
 	public ModelSearcher(
-		SearchContext searchContext, BooleanQuery searchQuery) {
+		SearchContext searchContext, Query searchQuery) {
 
 		_searchContext = searchContext;
 		_searchQuery = searchQuery;
+	}
+
+	public List<T> apply(Function<Document, T> documentToModelFunction) {
+		List<T> models = new ArrayList<>();
+
+		search().forEach(
+			document -> models.add(documentToModelFunction.apply(document)));
+
+		return models;
+	}
+
+	public List<T> search(Function<Document, T> documentToModelFunction) {
+		return apply(documentToModelFunction);
 	}
 
 	public List<Document> search() {
@@ -59,7 +73,7 @@ public abstract class ModelSearcher<T extends BaseModel<T>>
 	}
 
 	protected SearchContext _searchContext;
-	protected BooleanQuery _searchQuery;
+	protected Query _searchQuery;
 
 	private static final Log _log = LogFactoryUtil.getLog(ModelSearcher.class);
 

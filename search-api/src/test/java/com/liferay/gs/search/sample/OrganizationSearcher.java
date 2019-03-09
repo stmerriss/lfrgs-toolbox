@@ -1,7 +1,9 @@
-package com.liferay.gs.search;
+package com.liferay.gs.search.sample;
+
+import com.liferay.gs.search.ModelSearcher;
 
 import com.liferay.portal.kernel.model.Organization;
-import com.liferay.portal.kernel.search.BooleanQuery;
+import com.liferay.portal.kernel.search.Query;
 import com.liferay.portal.kernel.search.SearchContext;
 
 /**
@@ -10,7 +12,7 @@ import com.liferay.portal.kernel.search.SearchContext;
 public class OrganizationSearcher extends ModelSearcher<Organization> {
 
 	public OrganizationSearcher(
-		SearchContext searchContext, BooleanQuery searchQuery) {
+		SearchContext searchContext, Query searchQuery) {
 
 		super(searchContext, searchQuery);
 	}
