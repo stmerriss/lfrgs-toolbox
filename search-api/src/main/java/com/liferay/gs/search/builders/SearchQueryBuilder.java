@@ -1,6 +1,7 @@
-package com.lfrgs.search.builders;
+package com.liferay.gs.search.builders;
 
-import com.lfrgs.search.Builder;
+import com.liferay.gs.search.Builder;
+
 import com.liferay.portal.kernel.search.BooleanClauseOccur;
 import com.liferay.portal.kernel.search.BooleanQuery;
 import com.liferay.portal.kernel.search.Field;
@@ -13,7 +14,13 @@ import com.liferay.portal.kernel.search.generic.BooleanQueryImpl;
 public class SearchQueryBuilder implements Builder<BooleanQuery> {
 
 	public SearchQueryBuilder(Class klass) {
-		_klass = klass;
+		_className = klass.getName();
+
+		_filter = new BooleanFilter();
+	}
+
+	public SearchQueryBuilder(String className) {
+		_className = className;
 
 		_filter = new BooleanFilter();
 	}
@@ -29,7 +36,7 @@ public class SearchQueryBuilder implements Builder<BooleanQuery> {
 
 		BooleanFilter typeFilter = new BooleanFilter();
 
-		typeFilter.addRequiredTerm(Field.ENTRY_CLASS_NAME, _klass.getName());
+		typeFilter.addRequiredTerm(Field.ENTRY_CLASS_NAME, _className);
 
 		searchQuery.setPreBooleanFilter(typeFilter);
 
@@ -39,5 +46,6 @@ public class SearchQueryBuilder implements Builder<BooleanQuery> {
 	}
 
 	private BooleanFilter _filter;
-	private Class _klass;
+	private String _className;
+
 }

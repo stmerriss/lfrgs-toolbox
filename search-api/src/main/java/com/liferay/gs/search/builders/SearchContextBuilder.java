@@ -1,9 +1,9 @@
-package com.lfrgs.search.builders;
+package com.liferay.gs.search.builders;
 
-import com.lfrgs.search.Builder;
+import com.liferay.gs.search.Builder;
+
 import com.liferay.portal.kernel.dao.orm.QueryUtil;
 import com.liferay.portal.kernel.search.SearchContext;
-import com.liferay.portal.kernel.util.PortalUtil;
 
 /**
  * @author Shane Merriss
@@ -12,7 +12,7 @@ public class SearchContextBuilder implements Builder<SearchContext> {
 
 	public SearchContextBuilder() {
 		_andSearch = true;
-		_companyId = PortalUtil.getDefaultCompanyId();
+		_companyId = 0;
 		_end = QueryUtil.ALL_POS;
 		_start = QueryUtil.ALL_POS;
 	}

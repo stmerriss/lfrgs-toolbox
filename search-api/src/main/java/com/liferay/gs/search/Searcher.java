@@ -1,6 +1,4 @@
-package com.lfrgs.search;
-
-import com.liferay.portal.kernel.search.Document;
+package com.liferay.gs.search;
 
 import java.util.List;
 
@@ -9,7 +7,7 @@ import java.util.List;
  */
 public interface Searcher<T> {
 
-	public List<Document> search();
+	public List<T> search();
 
 	public long searchCount();
 }

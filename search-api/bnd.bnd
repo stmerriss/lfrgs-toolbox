@@ -1,6 +1,6 @@
 Bundle-Name: search-api
 Bundle-SymbolicName: search.api
-Bundle-Version: 1.0.0
+Bundle-Version: 0.0.1
 Export-Package: \
     com.lfrgs.search,\
     com.lfrgs.search.constants,\
