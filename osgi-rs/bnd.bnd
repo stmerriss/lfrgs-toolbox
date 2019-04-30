@@ -1,0 +1,4 @@
+Bundle-Name: com.liferay.gs.osgi.rs
+Bundle-SymbolicName: com.liferay.gs.osgi.rs
+Bundle-Version: 1.0.0
+Liferay-Configuration-Path: /configuration
