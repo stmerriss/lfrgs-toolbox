@@ -2,6 +2,7 @@ package com.liferay.gs.env.setup.internal;
 
 import com.liferay.gs.env.setup.AddSites;
 import com.liferay.gs.env.setup.config.SiteConfig;
+
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;

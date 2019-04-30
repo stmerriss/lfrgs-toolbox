@@ -1,6 +1,7 @@
 package com.liferay.gs.env.setup.internal;
 
 import com.liferay.gs.env.setup.AssignModelPermissions;
+
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;

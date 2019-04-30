@@ -1,9 +1,9 @@
 package com.liferay.gs.env.setup.internal;
 
 import com.liferay.gs.env.setup.AssignUserGroupGroupRoles;
-
 import com.liferay.gs.env.setup.config.RoleConfig;
 import com.liferay.gs.env.setup.config.UserGroupConfig;
+
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
@@ -22,7 +22,6 @@ import org.osgi.service.component.annotations.Reference;
  * @author Andrew Betts
  */
 @Component
-@SuppressWarnings("Duplicates")
 public class AssignUserGroupGroupRolesImpl
 	implements AssignUserGroupGroupRoles {
 
