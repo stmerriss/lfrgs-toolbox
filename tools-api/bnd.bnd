@@ -1,4 +1,11 @@
 Bundle-Name: Tools API
 Bundle-SymbolicName: tools-api
 Bundle-Version: 0.0.1
-Export-Package: com.lfrgs.tools.api
+Export-Package: \
+	com.liferay.gs.util.accessor,\
+	com.liferay.gs.util.comparator,\
+	com.liferay.gs.util.dto,\
+	com.liferay.gs.util.json,\
+	com.liferay.gs.util.log,\
+	com.liferay.gs.util.operations,\
+	com.liferay.gs.util.validator
