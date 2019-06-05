@@ -1,0 +1,3 @@
+Bundle-Name: GS Shopify Data Importer Service
+Bundle-SymbolicName: com.liferay.gs.importer.service
+Bundle-Version: 1.0.0

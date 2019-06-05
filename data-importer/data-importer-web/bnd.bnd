@@ -1,0 +1,4 @@
+Bundle-Name: GS Data Importer Web
+Bundle-SymbolicName: com.liferay.gs.importer.web
+Bundle-Version: 1.0.0
+Export-Package: com.liferay.gs.importer.constants

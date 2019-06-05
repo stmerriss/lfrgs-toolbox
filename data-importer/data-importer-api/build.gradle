@@ -1,0 +1,21 @@
+dependencies {
+	compile group: "org.apache.commons", name: "commons-collections4", version: "default"
+	compile group: "org.apache.commons", name: "commons-csv", version: "default"
+	compile group: "org.apache.commons", name: "commons-lang3", version: "default"
+	compile group: "org.apache.poi", name: "ooxml-schemas", version: "default"
+	compile group: "org.apache.poi", name: "ooxml-security", version: "default"
+	compile group: "org.apache.poi", name: "poi", version: "default"
+	compile group: "org.apache.poi", name: "poi-excelant", version: "default"
+	compile group: "org.apache.poi", name: "poi-ooxml", version: "default"
+	compile group: "org.apache.poi", name: "poi-ooxml-schemas", version: "default"
+	compile group: "org.apache.poi", name: "poi-scratchpad", version: "default"
+	compile group: "org.apache.xmlbeans", name: "xmlbeans", version: "default"
+	compile group: "org.osgi", name: "org.osgi.core", version: "default"
+
+	compileOnly group: "biz.aQute.bnd", name: "biz.aQute.bndlib", version: "default"
+	compileOnly group: "com.liferay", name: "com.liferay.dynamic.data.lists.api", version: "default"
+	compileOnly group: "com.liferay", name: "com.liferay.petra.string", version: "default"
+	compileOnly group: "com.liferay.portal", name: "com.liferay.portal.kernel", version: "default"
+	compileOnly group: "org.osgi", name: "org.osgi.core", version: "default"
+	compileOnly project(":modules:toolbox:tools-api")
+}
