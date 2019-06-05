@@ -4,5 +4,5 @@ Feature: Login with valid users
 		Given I am on the login page
 
 	Scenario: Login with valid user
-		And I login as 'lfrgs-liferay-jarvis@liferay.com' with 'test'
-		Then I am logged in as 'GS Admin'
+		And I login as 'test@liferay.com' with 'test'
+		Then I am logged in as 'Test Test'
